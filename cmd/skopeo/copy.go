@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/containers/image/copy"
 	"github.com/containers/image/docker/reference"
@@ -88,7 +89,15 @@ func copyHandler(c *cli.Context) error {
 		}
 	}
 
-	_, err = copy.Image(context.Background(), policyContext, destRef, srcRef, &copy.Options{
+	ctx := context.Background()
+	if c.IsSet("command-timeout") {
+		commandTimeout := c.Duration("command-timeout")
+		var cancel context.CancelFunc
+		ctx, cancel = context.WithTimeout(ctx, commandTimeout)
+		defer cancel()
+	}
+
+	_, err = copy.Image(ctx, policyContext, destRef, srcRef, &copy.Options{
 		RemoveSignatures:      removeSignatures,
 		SignBy:                signBy,
 		ReportWriter:          os.Stdout,
@@ -191,6 +200,11 @@ var copyCmd = cli.Command{
 			Name:  "dest-daemon-host",
 			Value: "",
 			Usage: "use docker daemon host at `HOST` (docker-daemon destinations only)",
+		},
+		cli.DurationFlag{
+			Name:  "command-timeout",
+			Value: 30 * time.Minute,
+			Usage: "timeout for the command execution",
 		},
 	},
 }
