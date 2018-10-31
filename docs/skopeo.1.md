@@ -107,6 +107,8 @@ Uses the system's trust policy to validate images, rejects images not trusted by
 
   **--dest-daemon-host** _host_ Copy to docker daemon at _host_. If _host_ starts with `tcp://`, HTTPS is enabled by default. To use plain HTTP, use the form `http://` (default is `unix:///var/run/docker.sock`).
 
+  **--command-timeout** _duration_ Timeout for the command execution.
+
 Existing signatures, if any, are preserved as well.
 
 ## skopeo delete

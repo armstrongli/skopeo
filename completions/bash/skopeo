@@ -33,6 +33,7 @@ _skopeo_copy() {
     --dest-tls-verify
     --src-daemon-host
     --dest-daemon-host
+    --command-timeout
     "
 
     local boolean_options="
