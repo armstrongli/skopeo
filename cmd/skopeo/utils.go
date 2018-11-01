@@ -43,7 +43,7 @@ func contextFromGlobalOptions(c *cli.Context, flagPrefix string) (*types.SystemC
 func commandTimeoutContextFromGlobalOptions(c *cli.Context) (context.Context, context.CancelFunc) {
 	ctx := context.Background()
 	var cancel context.CancelFunc = func() {}
-	if c.IsSet("command-timeout") {
+	if c.GlobalDuration("command-timeout") > 0 {
 		ctx, cancel = context.WithTimeout(ctx, c.Duration("command-timeout"))
 	}
 	return ctx, cancel
