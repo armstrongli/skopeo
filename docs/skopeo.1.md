@@ -59,6 +59,8 @@ Most commands refer to container images, using a _transport_`:`_details_ format.
 
   **--override-os** _OS_ Use _OS_ instead of the running OS for choosing images.
 
+  **--command-timeout** _duration_ Timeout for the command execution.
+
   **--help**|**-h** Show help
 
   **--version**|**-v** print the version number
@@ -106,8 +108,6 @@ Uses the system's trust policy to validate images, rejects images not trusted by
   **--src-daemon-host** _host_ Copy from docker daemon at _host_. If _host_ starts with `tcp://`, HTTPS is enabled by default. To use plain HTTP, use the form `http://` (default is `unix:///var/run/docker.sock`).
 
   **--dest-daemon-host** _host_ Copy to docker daemon at _host_. If _host_ starts with `tcp://`, HTTPS is enabled by default. To use plain HTTP, use the form `http://` (default is `unix:///var/run/docker.sock`).
-
-  **--command-timeout** _duration_ Timeout for the command execution.
 
 Existing signatures, if any, are preserved as well.
 

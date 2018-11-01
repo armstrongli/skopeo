@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/containers/image/signature"
 	"github.com/containers/skopeo/version"
@@ -59,6 +60,11 @@ func createApp() *cli.App {
 			Name:  "override-os",
 			Value: "",
 			Usage: "use `OS` instead of the running OS for choosing images",
+		},
+		cli.DurationFlag{
+			Name:  "command-timeout",
+			Value: 30 * time.Minute,
+			Usage: "timeout for the command execution",
 		},
 	}
 	app.Before = func(c *cli.Context) error {

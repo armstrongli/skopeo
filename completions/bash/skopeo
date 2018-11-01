@@ -33,7 +33,6 @@ _skopeo_copy() {
     --dest-tls-verify
     --src-daemon-host
     --dest-daemon-host
-    --command-timeout
     "
 
     local boolean_options="
@@ -111,6 +110,7 @@ _skopeo_skopeo() {
 	   --registries.d
        --override-arch
        --override-os
+       --command-timeout
      "
      local boolean_options="
 	   --insecure-policy
