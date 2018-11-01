@@ -44,7 +44,7 @@ func commandTimeoutContextFromGlobalOptions(c *cli.Context) (context.Context, co
 	ctx := context.Background()
 	var cancel context.CancelFunc = func() {}
 	if c.GlobalDuration("command-timeout") > 0 {
-		ctx, cancel = context.WithTimeout(ctx, c.Duration("command-timeout"))
+		ctx, cancel = context.WithTimeout(ctx, c.GlobalDuration("command-timeout"))
 	}
 	return ctx, cancel
 }

@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"time"
 
 	"github.com/containers/image/signature"
 	"github.com/containers/skopeo/version"
@@ -63,7 +62,6 @@ func createApp() *cli.App {
 		},
 		cli.DurationFlag{
 			Name:  "command-timeout",
-			Value: 30 * time.Minute,
 			Usage: "timeout for the command execution",
 		},
 	}
